@@ -1,7 +1,17 @@
-import React from 'react'
-import Child from './Child'
+import { useState } from "react";
+import FirstChild from "./FirstChild";
+import SecondChild from "./SecondChild";
+
 
 const Parent = () => {
+
+    const [firstChildMessage, setFirstChildMessage] = useState("");
+
+    const handleData = (data: string) => {
+
+        setFirstChildMessage(data);
+
+    }
 
     const style = {
         border: '1px solid blue'
@@ -14,7 +24,11 @@ const Parent = () => {
         
         <h4>Parent</h4>
 
-        <Child message={message} />
+        <h6>{firstChildMessage}</h6>
+
+        <FirstChild message={message} setData={handleData} />
+
+        <SecondChild message={firstChildMessage} />
 
     </div>
   )
